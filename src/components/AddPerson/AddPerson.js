@@ -140,7 +140,6 @@ class AddPerson extends Component {
                             </Button>
                         </Link> 
                     </div>
-                    
                 </Form>
             </div>
             </>

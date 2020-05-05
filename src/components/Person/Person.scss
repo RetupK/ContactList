@@ -1,0 +1,42 @@
+.table-main-container {
+    padding: 30px;
+    margin: 10px auto;
+    box-shadow: 5px 5px 6px -4px black;
+    box-sizing: border-box;
+    width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    background: lightgray;
+    .table-main-h1{
+        font-size: 34px;
+        display: flex;
+        justify-content: center;
+        color: black;
+        margin:0;
+        padding: 0;
+    }
+    .table-header-container{
+        height: 70px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        width: 100%;
+        margin: 0px auto 20px auto;
+        border-radius: 10px;
+        box-shadow: -5px 6px 4px -4px black;
+        .table-header-text{
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            display: flex;
+            margin-left: 20px;
+            font-size: 22px;
+        }
+        .table-header-buttonAdd{
+            margin-right: 20px;
+        }
+    }
+}
+.clickable {
+  cursor: pointer;
+}

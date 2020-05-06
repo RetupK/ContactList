@@ -13,7 +13,7 @@ class Persons extends Component {
             <div>
                 <Person
                     users={users}
-                    clicked={this.props.onRemovePerson}
+                    removePerson={this.props.onRemovePerson}
                     changeSortOrder={this.props.onChangeSortOrder}
                 />
             </div>
@@ -23,7 +23,9 @@ class Persons extends Component {
 
 const mapStateToProps = state => {
     return {
-        users: state.data
+        users: state.data,
+        loading: state.loading,
+        error: state.error,
     };
 };
 

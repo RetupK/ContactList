@@ -4,17 +4,49 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
 
+class Modal extends React.Component {
+    render() {
+        const {users, userName, userId, removePerson, showModal, toggle, modal} = this.props;
+        let modals = users.map((item, index) => {
+            return (
+                <div className={`modal-portfolio ${showModal ? " modal-visible" : " modal-non-visible"}`}>
+                    <p>Do you want delete? {item.name}</p>
+                    <button onClick={() => removePerson(item.id)}>Remove</button>
+                    <button onClick={toggle}>Cancel</button>
+                </div>
+            )
+        })
+        
+        return (
+            <>
+                {modals}
+            </>
+        )
+    }
+}
+
 class Person extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             sortOrder: null,
+            showModal: false,
+            modal: {id: null}
         };
+        this.handleToggleModal = this.handleToggleModal.bind(this);
     }
 
+    handleToggleModal() {
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
+
     render() {
-        const { clicked, users } = this.props;
+        const { removePerson, users } = this.props;
+        
 
         let renderEditButton = (id) => (
             <Link to={`/update-person/${id}`}>
@@ -33,10 +65,14 @@ class Person extends React.Component {
                     <td>{user.email}</td>
                     <td>{user && user.address && user.address.city}</td>
                     <td>{renderEditButton(user.id)}</td>
-                    <td><Button variant="danger" onClick={() => clicked(user.id)}>Delete</Button></td>
+                    <td>
+                        <Button variant="danger" onClick={() => this.handleToggleModal()}>Delete</Button>
+                    </td>
                 </tr>
             );
         })
+
+        //removePerson(user.id)
 
         let renderAddPersonButton = (
             <Link to="/add-person" className="table-header-buttonAdd">
@@ -54,6 +90,13 @@ class Person extends React.Component {
                         <p className="table-header-text">Users List</p>
                         {renderAddPersonButton}
                     </div>
+                    <Modal
+                        users={users}
+                        removePerson={removePerson}
+                        toggle={this.handleToggleModal}
+                        showModal={this.state.showModal}
+                        modal={this.state.modal}
+                    />
                     
                     <Table striped bordered hover variant="dark">
                         <thead>

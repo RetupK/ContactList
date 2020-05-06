@@ -7,10 +7,6 @@ import UpdatePersonContainer from "./containers/UpdatePerson";
 import * as actionTypes from './store/actions';
 import { connect } from "react-redux";
 
-export const About = () => (
-    <div>Hello</div>
-)
-
 
 class App extends Component {
 
@@ -24,7 +20,6 @@ class App extends Component {
             <div className="App">
                 <Router basename="/">
                     <Route path="/ContactList" exact={true} component={Persons} />
-                    <Route path="/ContactList/about" component={About} />
                     <Route path="/ContactList/add-person" component={AddPersonContainer} />
                     <Route path="/ContactList/update-person/:id" component={UpdatePersonContainer} />
                 </Router>

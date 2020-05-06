@@ -53,7 +53,7 @@ class Person extends React.Component {
         
 
         let renderEditButton = (id) => (
-            <Link to={`ContactList/update-person/${id}`}>
+            <Link to={`/ContactList/update-person/${id}`}>
                 <Button variant="warning">
                     Edit
                 </Button>

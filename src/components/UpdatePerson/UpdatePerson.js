@@ -137,10 +137,10 @@ class UpdatePerson extends Component {
                         /> 
                     </Form.Group>
                     <div className="userForm-add-cancel-buttons">
-                        <Link to="/ContactList" className="userForm-cancel-button">
+                        <Link to="/" className="userForm-cancel-button">
                             <Button variant="warning">Cancel</Button>
                         </Link>
-                        <Link to="/ContactList">
+                        <Link to="/">
                             <Button
                                 variant="primary"
                                 disabled={disabled}

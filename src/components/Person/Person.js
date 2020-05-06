@@ -53,7 +53,7 @@ class Person extends React.Component {
         
 
         let renderEditButton = (id) => (
-            <Link to={`ContactList/update-person/${id}`}>
+            <Link to={`/update-person/${id}`}>
                 <Button variant="warning">
                     Edit
                 </Button>
@@ -77,7 +77,7 @@ class Person extends React.Component {
         })
 
         let renderAddPersonButton = (
-            <Link to="ContactList/add-person" className="table-header-buttonAdd">
+            <Link to="/add-person" className="table-header-buttonAdd">
                 <Button variant="primary">
                     Add User
                 </Button>

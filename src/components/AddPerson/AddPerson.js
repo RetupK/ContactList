@@ -128,10 +128,10 @@ class AddPerson extends Component {
                         <div className="errorMsg">{this.state.emailAddressError}</div>
                     )}
                     <div className="userForm-add-cancel-buttons">
-                        <Link className="userForm-cancel-button" to="/">
+                        <Link className="userForm-cancel-button" to="/ContactList">
                             <Button variant="warning">Cancel</Button>
                         </Link>
-                        <Link to="/">
+                        <Link to="/ContactList">
                             <Button
                                 className="userForm-addUser-button"
                                 variant="primary"

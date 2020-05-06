@@ -6,20 +6,23 @@ import { Link } from "react-router-dom";
 
 class Modal extends React.Component {
     render() {
-        const {users, userName, userId, removePerson, showModal, toggle, modal} = this.props;
-        let modals = users.map((item, index) => {
-            return (
-                <div className={`modal-portfolio ${showModal ? " modal-visible" : " modal-non-visible"}`}>
-                    <p>Do you want delete? {item.name}</p>
-                    <button onClick={() => removePerson(item.id)}>Remove</button>
-                    <button onClick={toggle}>Cancel</button>
+        const {removePerson, name, showModal, toggle, id} = this.props;
+        let modal = showModal ? (
+            <div className={`${showModal ? "modal-visible" : "modal-non-visible"}`}>
+                <div className="modal-question-container">
+                    <p>Are you sure to remove {name}?</p>
                 </div>
-            )
-        })
+                <div className="modal-buttons-container">
+                    <Button variant="danger" onClick={() => {removePerson(id); toggle();}}>Remove</Button>
+                    <Button variant="warning" onClick={toggle}>Cancel</Button>
+                </div>
+                
+            </div>
+        ) : null
         
         return (
             <>
-                {modals}
+                {modal}
             </>
         )
     }
@@ -32,17 +35,19 @@ class Person extends React.Component {
         this.state = {
             sortOrder: null,
             showModal: false,
-            modal: {id: null}
+            id: null,
+            name: null
         };
         this.handleToggleModal = this.handleToggleModal.bind(this);
     }
 
-    handleToggleModal() {
+    handleToggleModal = (id, name) => {
         this.setState({
-            showModal: !this.state.showModal
+            showModal: !this.state.showModal,
+            id: id,
+            name: name
         })
     }
-
 
     render() {
         const { removePerson, users } = this.props;
@@ -66,13 +71,11 @@ class Person extends React.Component {
                     <td>{user && user.address && user.address.city}</td>
                     <td>{renderEditButton(user.id)}</td>
                     <td>
-                        <Button variant="danger" onClick={() => this.handleToggleModal()}>Delete</Button>
+                        <Button variant="danger" onClick={() => this.handleToggleModal(user.id, user.name)}>Delete</Button>
                     </td>
                 </tr>
             );
         })
-
-        //removePerson(user.id)
 
         let renderAddPersonButton = (
             <Link to="/add-person" className="table-header-buttonAdd">
@@ -84,21 +87,20 @@ class Person extends React.Component {
 
         return (
             <>
+                <Modal
+                    removePerson={removePerson}
+                    toggle={this.handleToggleModal}
+                    showModal={this.state.showModal}
+                    id={this.state.id}
+                    name={this.state.name}
+                />
                 <div className="table-main-container">
                     <h1 className="table-main-h1">Dashboard</h1>
                     <div className="table-header-container">
                         <p className="table-header-text">Users List</p>
                         {renderAddPersonButton}
                     </div>
-                    <Modal
-                        users={users}
-                        removePerson={removePerson}
-                        toggle={this.handleToggleModal}
-                        showModal={this.state.showModal}
-                        modal={this.state.modal}
-                    />
-                    
-                    <Table striped bordered hover variant="dark">
+                    <Table responsive="lg md sm" striped bordered hover variant="dark">
                         <thead>
                             <tr>
                                 <th>Id</th>

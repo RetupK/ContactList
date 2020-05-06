@@ -1,8 +1,14 @@
+@import "../../fonts.scss";
 .userForm-main-h1{
     font-size: 33px;
     margin: 30px 50px;
     display: flex;
     justify-content: flex-start;
+    font-family: $font-OpenSans;
+    @media(max-width: 767px) {
+        margin: 30px;
+        justify-content: center;
+    }
 }
 .userForm-main-container{
     width: 95%;
@@ -13,29 +19,38 @@
         height: 70px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid lightgray;
         h3{
             padding: 0px 20px;
             margin: 0;
             color: grey;
+            font-family: $font-OpenSans;
         }
     }
     .userForm-form-container{
         width: 50%;
         margin: 0 auto;
         padding: 117px 0px;
+        @media(max-width: 767px) {
+            width: 95%;
+        }
         .form-group{
             display: flex;
             .form-label{
-                margin: 0px 36px 0px 0px;
                 align-items: center;
                 display: flex;
-                width: 50px;
+                width: 140px;
+                font-family: $font-OpenSans;
             }
+        }
+        .errorMsg{
+            color: red;
+            margin-bottom: 1rem;
         }
         .userForm-add-cancel-buttons{
             display: flex;
             justify-content: flex-end;
+            font-family: $font-OpenSans;
             .userForm-cancel-button{
                 padding: 0px 20px;
             }

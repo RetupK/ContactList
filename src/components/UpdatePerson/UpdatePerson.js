@@ -73,6 +73,7 @@ class UpdatePerson extends Component {
     }
 
     render() {
+        let disabled = (this.state.emailAddress && this.state.name) == "";
         return (
             <div className="userForm-main-container">
                 <div className="userForm-header-container">
@@ -142,6 +143,7 @@ class UpdatePerson extends Component {
                         <Link to="/">
                             <Button
                                 variant="primary"
+                                disabled={disabled}
                                 onClick={() => this.props.onUpdatePerson({
                                     id: this.props.person.id,
                                     name: this.state.name,

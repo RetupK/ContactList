@@ -87,12 +87,13 @@ class AddPerson extends Component {
     }
 
     render() {
+        let disabled = (this.state.emailAddress && this.state.name) == "";
         return (
             <>
             <h1 className="userForm-main-h1">Dashboard</h1>
             <div className="userForm-main-container">
                 <div className="userForm-header-container">
-                    <h3>Form</h3>
+                    <h3>Add User</h3>
                 </div>
                 <Form className="userForm-form-container" onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formGroupEmail">
@@ -134,6 +135,7 @@ class AddPerson extends Component {
                             <Button
                                 className="userForm-addUser-button"
                                 variant="primary"
+                                disabled={disabled}
                                 onClick={() => this.props.personAdded(this.state.name, this.state.emailAddress)}
                             >
                                 Add User

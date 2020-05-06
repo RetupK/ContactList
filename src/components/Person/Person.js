@@ -29,7 +29,6 @@ class Modal extends React.Component {
 }
 
 class Person extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {

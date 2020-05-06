@@ -156,7 +156,6 @@ class UpdatePerson extends Component {
                             </Button>
                         </Link>
                     </div>
-                    
                 </Form>
             </div>
         );

@@ -16,7 +16,7 @@
     border-radius: 20px;
     visibility: visible;
     animation: bounceIn 0.5s ease-out;
-    padding: 50px 0px;
+    padding: 20px 0px;
     @media(max-width: 767px) {
         left: unset;
         right: 0;
@@ -24,11 +24,22 @@
         width: 100%;
         margin-top: -193px;
     }
+    .modal-header{
+        padding: unset;
+        justify-content: center;
+        font-size: 25px;
+        color: #e00606;
+    }
     .modal-question-container{
         padding: 20px 0px;
         display: flex;
         justify-content: center;
-        font-weight: bold;
+        width: 90%;
+        margin: 0 auto;
+        font-family: $font-OpenSans;
+        .modal-userName{
+            font-weight: bold;
+        }
     }
     .modal-buttons-container{
         display: flex;

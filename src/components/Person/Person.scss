@@ -1,4 +1,4 @@
-@import "../../fonts.scss";
+@import "../../fonts&colors.scss";
 
 .modal-visible{
     position: fixed;
@@ -28,7 +28,7 @@
         padding: unset;
         justify-content: center;
         font-size: 25px;
-        color: #e00606;
+        color: $color-red;
     }
     .modal-question-container{
         padding: 20px 0px;

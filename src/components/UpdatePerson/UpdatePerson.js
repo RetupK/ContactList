@@ -65,7 +65,6 @@ class UpdatePerson extends Component {
         if (value.trim === "") emailAddressError = "Email Address is required";
         else if (!emailValidator.test(value))
             emailAddressError = "Email is not valid";
-
         this.setState({
             emailAddressError
         });
@@ -73,7 +72,8 @@ class UpdatePerson extends Component {
     }
 
     render() {
-        let disabled = (this.state.emailAddress && this.state.name) == "";
+        const {emailAddressError, firstNameError, name, emailAddress, username, city} = this.state;
+        let disabled = (!emailAddressError && !firstNameError) == "";
         return (
             <div className="userForm-main-container">
                 <div className="userForm-header-container">
@@ -86,14 +86,14 @@ class UpdatePerson extends Component {
                             type="text"
                             placeholder="First Name"
                             name="name"
-                            value={this.state.name}
+                            value={name}
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
                             autoComplete="off" 
                         />
                     </Form.Group>
-                    {this.state.firstNameError && (
-                        <div className="errorMsg">{this.state.firstNameError}</div>
+                    {firstNameError && (
+                        <div className="errorMsg">{firstNameError}</div>
                     )}
                     <Form.Group controlId="formGroupEmail">
                         <Form.Label>Email</Form.Label>
@@ -101,15 +101,15 @@ class UpdatePerson extends Component {
                             type="email"
                             placeholder="Email Address"
                             name="emailAddress"
-                            value={this.state.emailAddress}
+                            value={emailAddress}
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
                             autoComplete="off"
                         />
                         
                     </Form.Group>
-                    {this.state.emailAddressError && (
-                        <div className="errorMsg">{this.state.emailAddressError}</div>
+                    {emailAddressError && (
+                        <div className="errorMsg">{emailAddressError}</div>
                     )}
                     <Form.Group>
                         <Form.Label>userName</Form.Label>
@@ -117,7 +117,7 @@ class UpdatePerson extends Component {
                             type="text"
                             placeholder="User Name"
                             name="username"
-                            value={this.state.username}
+                            value={username}
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
                             autoComplete="off"
@@ -130,7 +130,7 @@ class UpdatePerson extends Component {
                             type="text"
                             placeholder="city"
                             name="city"
-                            value={this.state.city}
+                            value={city}
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
                             autoComplete="off"
@@ -146,10 +146,10 @@ class UpdatePerson extends Component {
                                 disabled={disabled}
                                 onClick={() => this.props.onUpdatePerson({
                                     id: this.props.person.id,
-                                    name: this.state.name,
-                                    username: this.state.username,
-                                    email: this.state.emailAddress,
-                                    address: { city: this.state.city },
+                                    name: name,
+                                    username: username,
+                                    email: emailAddress,
+                                    address: { city: city },
                                 })}
                             >
                                 Update Person

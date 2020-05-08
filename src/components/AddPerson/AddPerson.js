@@ -87,7 +87,8 @@ class AddPerson extends Component {
     }
 
     render() {
-        let disabled = (this.state.emailAddress && this.state.name) == "";
+        const {emailAddressError, firstNameError, name, emailAddress} = this.state;
+        let disabled = (!emailAddressError && !firstNameError && name && emailAddress) == "";
         return (
             <>
             <h1 className="userForm-main-h1">Dashboard</h1>
@@ -102,14 +103,14 @@ class AddPerson extends Component {
                             type="text"
                             placeholder="First Name"
                             name="name"
-                            value={this.state.name}
+                            value={name}
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
                             autoComplete="off" 
                         />
                     </Form.Group>
-                    {this.state.firstNameError && (
-                        <div className="errorMsg">{this.state.firstNameError}</div>
+                    {firstNameError && (
+                        <div className="errorMsg">{firstNameError}</div>
                     )}
                     <Form.Group controlId="formGroupPassword">
                         <Form.Label>Email</Form.Label>
@@ -117,15 +118,15 @@ class AddPerson extends Component {
                             type="email"
                             placeholder="Email Address"
                             name="emailAddress"
-                            value={this.state.emailAddress}
+                            value={emailAddress}
                             onChange={this.handleChange}
                             onBlur={this.handleBlur}
                             autoComplete="off"
                         />
                         
                     </Form.Group>
-                    {this.state.emailAddressError && (
-                        <div className="errorMsg">{this.state.emailAddressError}</div>
+                    {emailAddressError && (
+                        <div className="errorMsg">{emailAddressError}</div>
                     )}
                     <div className="userForm-add-cancel-buttons">
                         <Link className="userForm-cancel-button" to="/ContactList">
@@ -136,7 +137,7 @@ class AddPerson extends Component {
                                 className="userForm-addUser-button"
                                 variant="primary"
                                 disabled={disabled}
-                                onClick={() => this.props.personAdded(this.state.name, this.state.emailAddress)}
+                                onClick={() => this.props.personAdded(name, emailAddress)}
                             >
                                 Add User
                             </Button>

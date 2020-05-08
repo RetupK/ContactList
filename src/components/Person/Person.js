@@ -54,7 +54,6 @@ class Person extends React.Component {
     render() {
         const { removePerson, users } = this.props;
         
-
         let renderEditButton = (id) => (
             <Link to={`/ContactList/update-person/${id}`}>
                 <Button variant="warning">

@@ -1,0 +1,8 @@
+{
+    "short_name": "Dashboard",
+    "name": "Dashboard",
+    "start_url": ".",
+    "display": "standalone",
+    "scope" : "/",
+    "lang": "eng"
+}

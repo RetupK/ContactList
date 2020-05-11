@@ -7,9 +7,6 @@ class UpdatePersonContainer extends Component {
 
     render() {
         const person = this.props.users.find(user => user.id == this.props.match.params.id);
-        if (!person) {
-            return <div>Loading...</div>
-        }
         return (
             <div>
                 <UpdatePerson person={person} onUpdatePerson={this.props.updatePerson} />

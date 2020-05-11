@@ -1,8 +1,12 @@
 {
-    "short_name": "Dashboard",
     "name": "Dashboard",
-    "start_url": ".",
+    "icons": [
+        {
+            "src": "favicon.ico"
+        }
+    ],
+    "start_url": "./index.html",
     "display": "standalone",
-    "scope" : "/",
-    "lang": "eng"
-}
+    "theme_color": "#000000",
+    "background_color": "#545b69"
+  }

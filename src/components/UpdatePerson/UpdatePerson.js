@@ -73,7 +73,7 @@ class UpdatePerson extends Component {
 
     render() {
         const {emailAddressError, firstNameError, name, emailAddress, username, city} = this.state;
-        let disabled = (!emailAddressError && !firstNameError) == "";
+        let disabled = (!emailAddressError && !firstNameError) === "";
         return (
             <div className="userForm-main-container">
                 <div className="userForm-header-container">

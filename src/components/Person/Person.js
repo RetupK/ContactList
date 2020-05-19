@@ -3,33 +3,9 @@ import "./Person.scss";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button'
 import { Link } from "react-router-dom";
+import {RenderPersons} from "./RenderPersons";
+import {Modal} from "./Modal";
 
-class Modal extends React.Component {
-    render() {
-        const {removePerson, name, showModal, toggle, id} = this.props;
-        let modal = showModal ? (
-            <div className={`${showModal ? "modal-visible" : "modal-non-visible"}`}>
-                <div className="modal-header">
-                    <p>Remove user</p>
-                </div>
-                <div className="modal-question-container">
-                    <p>Are you sure to remove <span className="modal-userName">{name}</span>?</p>
-                </div>
-                <div className="modal-buttons-container">
-                    <Button variant="danger" onClick={() => {removePerson(id); toggle();}}>Remove</Button>
-                    <Button variant="warning" onClick={toggle}>Cancel</Button>
-                </div>
-                
-            </div>
-        ) : null
-        
-        return (
-            <>
-                {modal}
-            </>
-        )
-    }
-}
 
 class Person extends React.Component {
     constructor(props) {
@@ -61,22 +37,6 @@ class Person extends React.Component {
                 </Button>
             </Link>
         );
-
-        let renderUsers = users.map((user) => {
-            return (
-                <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                    <td>{user && user.address && user.address.city}</td>
-                    <td>{renderEditButton(user.id)}</td>
-                    <td>
-                        <Button variant="danger" onClick={() => this.handleToggleModal(user.id, user.name)}>Delete</Button>
-                    </td>
-                </tr>
-            );
-        })
 
         let renderAddPersonButton = (
             <Link to="/ContactList/add-person" className="table-header-buttonAdd">
@@ -116,7 +76,11 @@ class Person extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {renderUsers}
+                            <RenderPersons 
+                                users={users}
+                                handleToggleModal={this.handleToggleModal}
+                                renderEditButton={renderEditButton}
+                            />
                         </tbody>
                     </Table>
                 </div>

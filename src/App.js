@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Persons from "./containers/Persons";
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import AddPersonContainer from "./containers/AddPerson";
 import UpdatePersonContainer from "./containers/UpdatePerson";
 import * as actionTypes from './store/actions';
@@ -19,6 +18,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Router basename="/">
+                    <Redirect exact from="/" to="/ContactList"/>
                     <Route path="/ContactList" exact={true} component={Persons} />
                     <Route path="/ContactList/add-person" component={AddPersonContainer} />
                     <Route path="/ContactList/update-person/:id" component={UpdatePersonContainer} />

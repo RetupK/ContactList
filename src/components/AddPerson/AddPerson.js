@@ -88,7 +88,7 @@ class AddPerson extends Component {
 
     render() {
         const {emailAddressError, firstNameError, name, emailAddress} = this.state;
-        let disabled = (!emailAddressError && !firstNameError && name && emailAddress) === "";
+        let disabled = (!emailAddressError && !firstNameError && emailAddress) == "";
         return (
             <>
             <h1 className="userForm-main-h1">Dashboard</h1>

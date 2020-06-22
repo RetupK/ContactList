@@ -18,7 +18,7 @@ class UpdatePerson extends Component {
             emailAddress: person.email || '',
             firstNameError: "",
             emailAddressError: "",
-            isFormSubmitted: false
+            isFormSubmitted: false,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
@@ -73,7 +73,7 @@ class UpdatePerson extends Component {
 
     render() {
         const {emailAddressError, firstNameError, name, emailAddress, username, city} = this.state;
-        let disabled = (!emailAddressError && !firstNameError) === "";
+        let disabled = (!emailAddressError && !firstNameError && username && city) == "";
         return (
             <div className="userForm-main-container">
                 <div className="userForm-header-container">

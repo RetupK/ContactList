@@ -4,7 +4,6 @@ import Person from "../components/Person/Person";
 import * as actionTypes from "../store/actions";
 
 class Persons extends Component {
-
     render() {
         const { loading, users, error } = this.props;
         if (loading) return <span>loading...</span>;
@@ -23,9 +22,9 @@ class Persons extends Component {
 
 const mapStateToProps = state => {
     return {
-        users: state.data,
-        loading: state.loading,
-        error: state.error,
+        users: state.users.data,
+        loading: state.users.loading,
+        error: state.users.error,
     };
 };
 

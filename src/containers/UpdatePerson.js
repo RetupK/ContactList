@@ -17,7 +17,7 @@ class UpdatePersonContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        users: state.data
+        users: state.users.data
     };
 };
 

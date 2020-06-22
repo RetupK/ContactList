@@ -1,7 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button'
 
-export let RenderPersons = ({users, renderEditButton, handleToggleModal}) =>
+export let RenderPersons = ({users, renderEditButton, handleToggleModal}) => 
 users.map((user) => {
     return (
         <tr key={user.id}>

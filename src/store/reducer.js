@@ -7,9 +7,10 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+    console.log(state);
     switch (action.type) {
         case actionTypes.LOADING_USERS:
-            return { ...state, loading: true };
+            return { ...state, loading: true, };
         case actionTypes.LOAD_USERS_SUCCESS:
             return {
                 ...state,

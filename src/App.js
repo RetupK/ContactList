@@ -18,7 +18,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Router basename="/">
-                    <Redirect exact from="/" to="/ContactList"/>
+                    <Redirect exact from="/" to="/ContactList" />
                     <Route path="/ContactList" exact={true} component={Persons} />
                     <Route path="/ContactList/add-person" component={AddPersonContainer} />
                     <Route path="/ContactList/update-person/:id" component={UpdatePersonContainer} />
@@ -27,6 +27,7 @@ class App extends Component {
         );
     }
 }
+
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -50,12 +51,8 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const mapStateToProps = state => {
-    return {};
-};
-
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(App);
